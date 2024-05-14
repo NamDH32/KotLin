@@ -1,5 +1,7 @@
 package com.dhnph34455.fpt.edu.kotlin_b1.Lab3
 
+import java.util.Scanner
+
 data class SinhVien(
     val hoTen: String, val tuoi: Int, val lop: String
 )
@@ -40,6 +42,7 @@ class QuanLyTheMuon {
 
 fun main() {
     val qlTheMuon = QuanLyTheMuon()
+    val scanner = Scanner(System.`in`)
 
     val sv1 = SinhVien("Nguyễn Văn A", 20, "Khoa CNTT")
     val sv2 = SinhVien("Trần Thị B", 21, "Khoa Toán")
@@ -53,7 +56,9 @@ fun main() {
     println("Danh sách thẻ mượn:")
     qlTheMuon.hienThiDanhSachTheMuon()
 
-    qlTheMuon.xoaTheMuon("PM001")
+    println("Nhập mã phiếu mượn muốn xóa: ")
+    val maPhieuXoa = scanner.nextLine()
+    qlTheMuon.xoaTheMuon(maPhieuXoa)
 
     println("\nDanh sách thẻ mượn sau khi xóa:")
     qlTheMuon.hienThiDanhSachTheMuon()

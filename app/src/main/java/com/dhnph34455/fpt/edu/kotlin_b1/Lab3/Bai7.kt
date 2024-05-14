@@ -1,5 +1,7 @@
 package com.dhnph34455.fpt.edu.kotlin_b1.Lab3
 
+import java.util.Scanner
+
 // Lớp Nguoi để quản lý các thông tin cá nhân của mỗi giáo viên
 open class Nguoi(
     val hoTen: String,
@@ -68,8 +70,8 @@ class QuanLyCBGV {
 
 fun main() {
     val qlCB = QuanLyCBGV()
+    val scanner = Scanner(System.`in`)
 
-    // Thêm cán bộ giáo viên
     val gv1 = CBGV("Nguyễn Văn A", 40, "Hà Nội", "GV001", 15000000.0, 2000000.0, 500000.0)
     val gv2 = CBGV("Trần Thị B", 35, "TP HCM", "GV002", 16000000.0, 2500000.0, 300000.0)
 
@@ -79,15 +81,19 @@ fun main() {
     println("Danh sách cán bộ giáo viên:")
     qlCB.hienThiDSCB()
 
-    val maSoGV = "GV001"
-    val luongThucLinh = qlCB.tinhLuongThucLinh(maSoGV)
+
+    println("Nhập mã số giáo viên cần xóa: ")
+    val MaSoGv = scanner.nextLine()
+    qlCB.xoaCB(MaSoGv)
+
+    val luongThucLinh = qlCB.tinhLuongThucLinh(MaSoGv)
     if (luongThucLinh != null) {
-        println("\nLương thực lĩnh của giáo viên với mã số $maSoGV là: $luongThucLinh")
+        println("\nLương thực lĩnh của giáo viên với mã số $MaSoGv là: $luongThucLinh")
     } else {
-        println("\nKhông tìm thấy giáo viên với mã số $maSoGV")
+        println("\nKhông tìm thấy giáo viên với mã số $MaSoGv")
     }
 
-    qlCB.xoaCB(maSoGV)
+
 
     println("\nDanh sách cán bộ giáo viên sau khi xóa:")
     qlCB.hienThiDSCB()

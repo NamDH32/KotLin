@@ -1,5 +1,7 @@
 package com.dhnph34455.fpt.edu.kotlin_b1.Lab2
 
+import java.util.Scanner
+
 
 //lưu trữ thông tin của mỗi sinh viên
 data class SinhVien(
@@ -23,7 +25,7 @@ class QuanLySinhVien {
         sinhVien?.let {
             danhSachSinhVien.remove(it)
             println("Đã xóa sinh viên có mã số $mssv")
-        } ?: println("Không tìm thấy sinh viên có mã số $mssv")
+        } ?: println("Không tìm thấy sinh viên có mã số $mssv +")
     }
 
     fun suaThongTinSinhVien(
@@ -57,8 +59,10 @@ class QuanLySinhVien {
     }
 }
 
+
 fun main() {
     val quanLy = QuanLySinhVien()
+    val scanner = Scanner(System.`in`)
 
     // Thêm sinh viên vào danh sách
     val sinhVien1 = SinhVien("Nguyen Van A", "SV001", 8.5f, true, 21)
@@ -72,7 +76,9 @@ fun main() {
 
     quanLy.xemDanhSachSinhVien()
 
-    quanLy.xoaSinhVien("SV001")
+    println("Mời nhập mã sinh viên cần xóa")
+    val MaXoaSv = scanner.nextLine()
+    quanLy.xoaSinhVien(MaXoaSv)
 
     quanLy.xemDanhSachSinhVien()
 }
